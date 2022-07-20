@@ -1,38 +1,8 @@
-plugins {
-    id 'java'
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
-}
-
-group 'dev.wiji'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-    maven {
-        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
-        content {
-            includeGroup 'org.bukkit'
-            includeGroup 'org.spigotmc'
-        }
-    }
-
-    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
-    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+ext {
+    versionSpigot1_19 = '1.19-R0.1-SNAPSHOT'
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:23.0.0'
-//    compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
-    compileOnly 'org.spigotmc:spigot:1.19-R0.1-SNAPSHOT'
     compileOnly project(":Compatibility")
-}
-
-shadowJar {
-}
-
-gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xmaxerrs" << "1000"
-    }
+    compileOnly "org.spigotmc:spigot:$versionSpigot1_19"
 }

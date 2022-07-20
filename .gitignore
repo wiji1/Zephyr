@@ -3,8 +3,8 @@
 /build/
 /gradlew
 /gradlew.bat
-/build
-/v1_8_8/build
-/v1_19/build
-/ZephyrMain/build
-/Compatibility/build
+/build/*
+/v1_8_8/build/*
+/v1_19/build/*
+/ZephyrMain/build/*
+/Compatibility/build/*

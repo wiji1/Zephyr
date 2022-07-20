@@ -20,10 +20,12 @@ public class Zephyr extends JavaPlugin implements Listener {
         String version = Bukkit.getVersion();
         System.out.println(version);
 
-        switch(version) {
-            case "1.8": NMS = new NMSv1_8_8();
-            case "1.19": NMS = new NMSv1_19();
-        }
+        if(version.contains("1.8.8")) NMS = new NMSv1_8_8();
+        if(version.contains("1.19")) NMS = new NMSv1_19();
+    }
+
+    public static String getVersion() {
+        return Bukkit.getVersion();
     }
 
     public static int getAbsorption(Player player) {

@@ -6,7 +6,6 @@ import dev.wiji.Zephyr.v1_19.NMSv1_19;
 import dev.wiji.Zephyr.v1_8_8.NMSv1_8_8;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,5 +29,11 @@ public class Zephyr extends JavaPlugin implements Listener {
     public static int getAbsorption(Player player) {
         return NMS.getAbsorption(player);
     }
+
+    public static void sendTitle(Player player, String message, int time) {
+        NMS.sendTitle(player, message, time);
+    }
+
+
 
 }

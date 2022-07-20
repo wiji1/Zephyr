@@ -2,4 +2,5 @@ rootProject.name = 'Zephyr'
 include 'v1_8_8'
 include 'v1_19'
 include 'ZephyrMain'
+include 'Compatibility'
 

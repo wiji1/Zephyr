@@ -1,7 +1,7 @@
 package dev.wiji.Zephyr.v1_19.PacketWrappers;
 
 import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
-import dev.wiji.Zephyr.compatibility.PacketEnums.ModernTeleportFlags;
+import dev.wiji.Zephyr.v1_19.PacketEnums.ModernTeleportFlags;
 import dev.wiji.Zephyr.compatibility.ZPacket;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.PacketPlayOutPosition;

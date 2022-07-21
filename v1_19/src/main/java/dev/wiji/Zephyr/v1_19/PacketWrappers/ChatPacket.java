@@ -1,12 +1,10 @@
 package dev.wiji.Zephyr.v1_19.PacketWrappers;
 
 import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
-import dev.wiji.Zephyr.compatibility.PacketEnums.LegacyChatType;
-import dev.wiji.Zephyr.compatibility.PacketEnums.ModernChatType;
 import dev.wiji.Zephyr.compatibility.ZPacket;
+import dev.wiji.Zephyr.v1_19.PacketEnums.ModernChatType;
 import net.minecraft.network.chat.IChatBaseComponent;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientboundPlayerChatPacket;
 import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 import net.minecraft.server.level.EntityPlayer;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;

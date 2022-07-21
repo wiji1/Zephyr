@@ -1,7 +1,7 @@
 package dev.wiji.Zephyr.v1_8_8.PacketWrappers;
 
 import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
-import dev.wiji.Zephyr.compatibility.PacketEnums.LegacyAnimation;
+import dev.wiji.Zephyr.v1_8_8.PacketEnums.LegacyAnimation;
 import dev.wiji.Zephyr.compatibility.ZPacket;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;

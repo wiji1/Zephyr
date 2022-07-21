@@ -1,6 +1,6 @@
-package dev.wiji.Zephyr.compatibility.PacketEnums;
+package dev.wiji.Zephyr.v1_19.PacketEnums;
 
-public enum LegacyAnimation {
+public enum ModernAnimation {
     SWING_ARM((byte) 0),
     TAKE_DAMAGE((byte) 1),
     LEAVE_BED((byte) 2),
@@ -11,7 +11,7 @@ public enum LegacyAnimation {
 
     private final byte position;
 
-    LegacyAnimation(byte position) {
+    ModernAnimation(byte position) {
         this.position = position;
     }
 

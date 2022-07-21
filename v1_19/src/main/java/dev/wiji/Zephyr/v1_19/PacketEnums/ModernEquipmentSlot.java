@@ -1,4 +1,4 @@
-package dev.wiji.Zephyr.compatibility.PacketEnums;
+package dev.wiji.Zephyr.v1_19.PacketEnums;
 
 public enum ModernEquipmentSlot {
     HELD_ITEM((byte) 0, "mainhand"),

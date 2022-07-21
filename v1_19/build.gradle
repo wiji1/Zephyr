@@ -3,6 +3,7 @@ ext {
 }
 
 dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
     compileOnly project(":Compatibility")
     compileOnly "org.spigotmc:spigot:$versionSpigot1_19"
 }

@@ -1,4 +1,4 @@
-package dev.wiji.Zephyr.compatibility.PacketEnums;
+package dev.wiji.Zephyr.v1_8_8.PacketEnums;
 
 public enum LegacyTeleportFlags {
 

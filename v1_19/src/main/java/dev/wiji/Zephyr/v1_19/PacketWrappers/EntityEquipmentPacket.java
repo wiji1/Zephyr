@@ -2,7 +2,7 @@ package dev.wiji.Zephyr.v1_19.PacketWrappers;
 
 import com.mojang.datafixers.util.Pair;
 import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
-import dev.wiji.Zephyr.compatibility.PacketEnums.ModernEquipmentSlot;
+import dev.wiji.Zephyr.v1_19.PacketEnums.ModernEquipmentSlot;
 import dev.wiji.Zephyr.compatibility.ZPacket;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityEquipment;

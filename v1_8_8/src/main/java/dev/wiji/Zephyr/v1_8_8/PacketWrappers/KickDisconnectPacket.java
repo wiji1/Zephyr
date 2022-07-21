@@ -83,4 +83,15 @@ public class KickDisconnectPacket extends ZPacket {
     public List<Player> getPlayers() {
         return clients;
     }
+
+    @Override
+    public void setPlayer(Player player) {
+        clients.clear();
+        clients.add(player);
+    }
+
+    @Override
+    public void setPlayers(List<Player> players) {
+        clients = players;
+    }
 }

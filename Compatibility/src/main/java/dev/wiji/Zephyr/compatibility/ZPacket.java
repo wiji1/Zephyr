@@ -17,10 +17,14 @@ public abstract class ZPacket {
 
     public abstract Object getPacket();
 
-    public abstract void sendPacket() throws PacketParameterException;
+    public abstract void sendPacket();
 
     public abstract Player getPlayer();
 
     public abstract List<Player> getPlayers();
+
+    public abstract void setPlayer(Player player);
+
+    public abstract void setPlayers(List<Player> players);
 
 }

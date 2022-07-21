@@ -1,9 +1,7 @@
 package dev.wiji.Zephyr.v1_8_8;
 
 import dev.wiji.Zephyr.compatibility.NMSHelper;
-import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.IChatBaseComponent;
-import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -28,6 +26,7 @@ public class NMSv1_8_8 extends NMSHelper {
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(title);
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(title);
     }
+
 
 
 }

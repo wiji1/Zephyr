@@ -1,9 +1,10 @@
 package dev.wiji.Zephyr.v1_8_8.PacketWrappers;
 
 import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
-import dev.wiji.Zephyr.compatibility.PacketEnums.LegacyChatType;
 import dev.wiji.Zephyr.compatibility.ZPacket;
-import net.minecraft.server.v1_8_R3.*;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.Packet;
+import net.minecraft.server.v1_8_R3.PacketPlayOutUpdateTime;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
@@ -11,70 +12,71 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatPacket extends ZPacket {
+public class UpdateTimePacket extends ZPacket {
     private List<Player> clients;
-    private String message;
-    private LegacyChatType chatType;
+    private long worldAge;
+    private long time;
 
 
-    public ChatPacket(Player client) {
+    public UpdateTimePacket(Player client) {
         super(client);
         clients = new ArrayList<>();
         clients.add(client);
     }
 
-    public ChatPacket(List<Player> clients) {
+    public UpdateTimePacket(List<Player> clients) {
         super(clients);
         this.clients = clients;
     }
 
-    public ChatPacket(Player client, String message, LegacyChatType chatType) {
+    public UpdateTimePacket(Player client, long worldAge, long time) {
         super(client);
         clients = new ArrayList<>();
         clients.add(client);
-        this.message = message;
-        this.chatType = chatType;
+        this.worldAge = worldAge;
+        this.time = time;
     }
 
-    public ChatPacket(List<Player> clients, String message, LegacyChatType chatType) {
+    public UpdateTimePacket(List<Player> clients, long worldAge, long time) {
         super(clients);
         this.clients = clients;
-        this.message = message;
-        this.chatType = chatType;
+        this.worldAge = worldAge;
+        this.time = time;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setWorldAge(long worldAge) {
+        this.worldAge = worldAge;
     }
 
-    public void setChatType(LegacyChatType chatType) {
-        this.chatType = chatType;
+    public void setTime(long time) {
+        this.time = time;
     }
 
-    public String getMessage() {
-        return message;
+    public long getWorldAge() {
+        return worldAge;
     }
 
-    public LegacyChatType getChatType() {
-        return chatType;
+    public long getTime() {
+        return time;
     }
 
     @Override
     public Object getPacket() {
-        IChatBaseComponent baseComponent = IChatBaseComponent.ChatSerializer.a(message);
-        return new PacketPlayOutChat(baseComponent, chatType.getPosition());
+        return new PacketPlayOutUpdateTime(worldAge, time, true);
     }
 
     @Override
     public void sendPacket() throws PacketParameterException {
         List<Field> fields = new ArrayList<>();
         try {
-            fields.add(this.getClass().getDeclaredField("message"));
-            fields.add(this.getClass().getDeclaredField("chatType"));
+            fields.add(this.getClass().getDeclaredField("worldAge"));
+            fields.add(this.getClass().getDeclaredField("time"));
         } catch(NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-        if(message == null || chatType == null) throw new PacketParameterException(fields);
+        if(worldAge == 0 || time == 0) {
+            throw new PacketParameterException(fields);
+        }
 
 
         for(Player client : clients) {

@@ -4,6 +4,7 @@ import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
 import dev.wiji.Zephyr.compatibility.ZPacket;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.Packet;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPosition;
 import net.minecraft.server.v1_8_R3.PacketPlayOutUpdateTime;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;

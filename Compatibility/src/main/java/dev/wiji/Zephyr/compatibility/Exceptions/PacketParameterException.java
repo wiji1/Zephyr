@@ -12,7 +12,7 @@ public class PacketParameterException extends RuntimeException {
     }
 
     private static String getMessage(List<Field> parameters) {
-        StringBuilder builder = new StringBuilder("Invalid Parameters. Correct Params: ");
+        StringBuilder builder = new StringBuilder("One or more missing variables. Correct Params: ");
 
         for(int i = 0; i < parameters.size(); i++) {
             Field parameter = parameters.get(i);

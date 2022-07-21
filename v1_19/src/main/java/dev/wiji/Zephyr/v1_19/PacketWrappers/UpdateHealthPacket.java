@@ -3,7 +3,7 @@ package dev.wiji.Zephyr.v1_19.PacketWrappers;
 import dev.wiji.Zephyr.compatibility.Exceptions.PacketParameterException;
 import dev.wiji.Zephyr.compatibility.ZPacket;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.PacketPlayOutUpdateTime;
+import net.minecraft.network.protocol.game.PacketPlayOutUpdateHealth;
 import net.minecraft.server.level.EntityPlayer;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -12,71 +12,85 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdateTimePacket extends ZPacket {
+public class UpdateHealthPacket extends ZPacket {
     private List<Player> clients;
-    private Long worldAge;
-    private Long time;
+    private Float health;
+    private Integer hunger;
+    private Float saturation;
 
+    /* Health: 0 or less = dead, 20 = full HP
+     * Hunger: 0–20
+     * Saturation: Seems to vary from 0.0 to 5.0 in integer increments
+     */
 
-    public UpdateTimePacket(Player client) {
+    public UpdateHealthPacket(Player client) {
         super(client);
         clients = new ArrayList<>();
         clients.add(client);
     }
 
-    public UpdateTimePacket(List<Player> clients) {
+    public UpdateHealthPacket(List<Player> clients) {
         super(clients);
         this.clients = clients;
     }
 
-    public UpdateTimePacket(Player client, long worldAge, long time) {
+    public UpdateHealthPacket(Player client, float health, int hunger, float saturation) {
         super(client);
         clients = new ArrayList<>();
         clients.add(client);
-        this.worldAge = worldAge;
-        this.time = time;
+        this.health = health;
+        this.hunger = hunger;
+        this.saturation = saturation;
     }
 
-    public UpdateTimePacket(List<Player> clients, long worldAge, long time) {
+    public UpdateHealthPacket(List<Player> clients, float health, int hunger, float saturation) {
         super(clients);
         this.clients = clients;
-        this.worldAge = worldAge;
-        this.time = time;
+        this.health = health;
+        this.hunger = hunger;
+        this.saturation = saturation;
     }
 
-    public void setWorldAge(long worldAge) {
-        this.worldAge = worldAge;
+    public void setHealth(float health) {
+        this.health = health;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setHunger(int hunger) {
+        this.hunger = hunger;
     }
 
-    public long getWorldAge() {
-        return worldAge;
+    public void setSaturation(float saturation) {
+        this.saturation = saturation;
     }
 
-    public long getTime() {
-        return time;
+    public float getHealth() {
+        return health;
+    }
+
+    public int getHunger() {
+        return hunger;
+    }
+
+    public float getSaturation() {
+        return saturation;
     }
 
     @Override
     public Object getPacket() {
-        return new PacketPlayOutUpdateTime(worldAge, time, true);
+        return new PacketPlayOutUpdateHealth(health, hunger, saturation);
     }
 
     @Override
     public void sendPacket() throws PacketParameterException {
         List<Field> fields = new ArrayList<>();
         try {
-            fields.add(this.getClass().getDeclaredField("worldAge"));
-            fields.add(this.getClass().getDeclaredField("time"));
+            fields.add(this.getClass().getDeclaredField("health"));
+            fields.add(this.getClass().getDeclaredField("hunger"));
+            fields.add(this.getClass().getDeclaredField("saturation"));
         } catch(NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-        if(worldAge == null || time == null) {
-            throw new PacketParameterException(fields);
-        }
+        if(health == null || hunger == null || saturation == null) throw new PacketParameterException(fields);
 
 
         for(Player client : clients) {

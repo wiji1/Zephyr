@@ -17,7 +17,7 @@ import java.util.List;
 public class SpawnPositionPacket extends ZPacket {
     private List<Player> clients;
     private Location location;
-    private float pitch;
+    private Float pitch;
 
 
     public SpawnPositionPacket(Player client) {
@@ -92,7 +92,7 @@ public class SpawnPositionPacket extends ZPacket {
         } catch(NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-        if(location == null || pitch == 0) throw new PacketParameterException(fields);
+        if(location == null || pitch == null) throw new PacketParameterException(fields);
 
 
         for(Player client : clients) {

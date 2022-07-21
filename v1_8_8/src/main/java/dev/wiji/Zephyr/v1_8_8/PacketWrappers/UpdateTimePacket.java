@@ -14,8 +14,8 @@ import java.util.List;
 
 public class UpdateTimePacket extends ZPacket {
     private List<Player> clients;
-    private long worldAge;
-    private long time;
+    private Long worldAge;
+    private Long time;
 
 
     public UpdateTimePacket(Player client) {
@@ -74,7 +74,7 @@ public class UpdateTimePacket extends ZPacket {
         } catch(NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-        if(worldAge == 0 || time == 0) {
+        if(worldAge == null || time == null) {
             throw new PacketParameterException(fields);
         }
 

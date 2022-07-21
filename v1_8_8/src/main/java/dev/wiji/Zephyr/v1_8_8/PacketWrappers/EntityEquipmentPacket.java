@@ -15,7 +15,7 @@ import java.util.List;
 
 public class EntityEquipmentPacket extends ZPacket {
     private List<Player> clients;
-    private int entityID;
+    private Integer entityID;
     private LegacyEquipmentSlot equipmentSlot;
     private ItemStack item;
 
@@ -87,7 +87,7 @@ public class EntityEquipmentPacket extends ZPacket {
         } catch(NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-        if(entityID == 0 || equipmentSlot == null || item == null) {
+        if(entityID == null || equipmentSlot == null || item == null) {
             throw new PacketParameterException(fields);
         }
 
